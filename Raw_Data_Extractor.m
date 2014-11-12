@@ -1,4 +1,4 @@
-function [ Raw_Data ] = Raw_Data_Extractor( filename )
+function [ Raw_Data, no_of_elements ] = Raw_Data_Extractor( filename )
 
 %% Import data from text file.
 % Script for importing data from the following text file:
@@ -70,6 +70,8 @@ end
 
 %% Create output variable
 Raw_Data = raw;
+no_of_elements = size(Raw_Data);
+no_of_elements =no_of_elements(1,1);
 %% Clear temporary variables
 clearvars filename formatSpec fileID dataArray ans raw col numericData rawData row regexstr result numbers invalidThousandsSeparator thousandsRegExp me;
 
