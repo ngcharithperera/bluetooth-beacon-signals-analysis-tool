@@ -8,7 +8,7 @@ nameFolds(ismember(nameFolds,{'.','..'})) = [];
 for i = nameFolds
     a = '\' 
     C = strcat(path,a, i)
-    for j = C
+    for j = i:
         %k = 
         j(1,1)
         files = dir(char(j(1,1)))
