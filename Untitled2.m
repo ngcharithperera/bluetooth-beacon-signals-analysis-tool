@@ -1,7 +1,10 @@
 path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Raw Data'
 results_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Graphs\';
 d = dir(path);
-isub = [d(:).isdir]; %# returns logical vector
+
+
+
+isub = [d(:).isdir];  
 nameFolds = {d(isub).name}';
 nameFolds(ismember(nameFolds,{'.','..'})) = [];
 distance_array = [440, 255, 320, 205];
