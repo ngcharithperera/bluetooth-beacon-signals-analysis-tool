@@ -1,8 +1,8 @@
 function [ output_args ] = Data_Analyzer(graph_save_name, graph_title, filepath_1, filepath_2, distance, Y_axis_label)
 
 
-[Raw_Data_Y1, no_of_elements_in_Y1] = Raw_Data_Extractor3(filepath_1);
-[Raw_Data_Y2, no_of_elements_in_Y2] = Raw_Data_Extractor3(filepath_2);
+[Raw_Data_Y1, no_of_elements_in_Y1] = Raw_Data_Extractor(filepath_1);
+[Raw_Data_Y2, no_of_elements_in_Y2] = Raw_Data_Extractor(filepath_2);
 
 
 segment_Y1 = distance / no_of_elements_in_Y1;
@@ -16,6 +16,8 @@ X2 = Data_Transposer_X( segment_Y2, no_of_elements_in_Y2  );
 Raw_Data_Y1 = Data_Transposer_Y(Raw_Data_Y1, no_of_elements_in_Y1 );
 Raw_Data_Y2 = Data_Transposer_Y(Raw_Data_Y2, no_of_elements_in_Y2);
 
+Raw_Data_Y1 = -Raw_Data_Y1;
+Raw_Data_Y2 = -Raw_Data_Y2;
 
 Raw_Data_Y2 = flip(Raw_Data_Y2);
 
