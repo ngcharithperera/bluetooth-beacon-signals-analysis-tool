@@ -2,7 +2,7 @@ data_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Raw Data';
 results_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Graphs\';
 
 walking_paths_names_list = {'.P1', '.P2', '.P3', '.P4'};
-walking_paths_distance_list = [440, 255, 320, 205];
+walking_paths_distance_list = [440, 540, 320, 205];
 
 starting_point_name_list = {'Distance from Door to Desk (Verticle) (cm)', 
     'Distance from Bathroom to Bed (Verticle)  (cm)',
