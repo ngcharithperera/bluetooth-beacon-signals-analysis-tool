@@ -1,4 +1,4 @@
-data_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Raw Data';
+data_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Raw_Data_AUS_Studio';
 results_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\Graphs\';
 
 walking_paths_names_list = {'.P1', '.P2', '.P3', '.P4'};

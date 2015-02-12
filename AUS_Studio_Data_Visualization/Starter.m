@@ -37,14 +37,14 @@ BT_icon_list = {'BT_Left.png',
                 'BT_Right.png', 
                 'BT_Down.png'}
 
-Walking_Direction_Icon_Location_P1_Up = [784, 286];
-Walking_Direction_Icon_Location_P1_Down = [814, 1254];
-Walking_Direction_Icon_Location_P2_Up = [330, 68];
-Walking_Direction_Icon_Location_P2_Down = [306, 1188];
-Walking_Direction_Icon_Location_P3_Left = [36, 570];
-Walking_Direction_Icon_Location_P3_Right = [788, 570];
-Walking_Direction_Icon_Location_P4_Left = [24, 900];
-Walking_Direction_Icon_Location_P4_Right = [458, 948];            
+Walking_Direction_Icon_Location_P1_Up = [650, 286];
+Walking_Direction_Icon_Location_P1_Down = [750, 1200];
+Walking_Direction_Icon_Location_P2_Up = [240, 70];
+Walking_Direction_Icon_Location_P2_Down = [330, 1150];
+Walking_Direction_Icon_Location_P3_Left = [5, 570];
+Walking_Direction_Icon_Location_P3_Right = [800, 500];
+Walking_Direction_Icon_Location_P4_Left = [5, 948];
+Walking_Direction_Icon_Location_P4_Right = [400, 830];            
             
             
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
@@ -67,30 +67,43 @@ walking_direction_icon_image_list = {'Walk_Up.png',
                                      'Walk_Right.png'};
 
 
+Heat_Map_Location_P1_Up = [726, 200];
+Heat_Map_Location_P1_Down = [770, 200];
+Heat_Map_Location_P2_Up = [296, 5];
+Heat_Map_Location_P2_Down = [330, 5];
+Heat_Map_Location_P3_Left = [1, 556];
+Heat_Map_Location_P3_Right = [1, 606];
+Heat_Map_Location_P4_Left = [1, 920];
+Heat_Map_Location_P4_Right = [1, 958];
+
+
+heat_map_location_list = [Heat_Map_Location_P1_Up,
+                          Heat_Map_Location_P1_Down,
+                          Heat_Map_Location_P2_Up,
+                          Heat_Map_Location_P2_Down,
+                          Heat_Map_Location_P3_Left,
+                          Heat_Map_Location_P3_Right
+                          Heat_Map_Location_P4_Left,
+                          Heat_Map_Location_P4_Right];
 
 
 
-
-
-
-
-
-Heat_Map_Location_P1_Up = [726, 310];
-Heat_Map_Location_P1_Down = [770, 310];
-Heat_Map_Location_P2_Up = [296, 378];
-Heat_Map_Location_P2_Down = [330, 378];
-Heat_Map_Location_P3_Left = [22, 526];
-Heat_Map_Location_P3_Right = [22, 606];
-Heat_Map_Location_P4_Left = [28, 920];
-Heat_Map_Location_P4_Right = [28, 958];
-
-
+heat_map_rotation_list = [270, 90,  270, 90, 0, 180, 0, 180]
+heat_map_length_list = [1100, 1100,  1300, 1300, 850, 850, 500, 500]
 
 [ folder_list, folder_path_list, number_of_folders ] = get_folder_list(data_folder_path);
 
 for folder_index = 1:number_of_folders   
+    heat_map_location_index = 1
     visualization_image_save_name = folder_list(folder_index);
-    Load_Floor_Map('AUS');    
+    visualization_image_save_name = visualization_image_save_name{1}
+    visualization_image_save_name = strcat(visualization_image_save_name , '.png')
+    %floor_map_image = Load_Floor_Map('AUS'); 
+    h = figure;
+    floor_map_image = imread('C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\Floor_Maps\AUS_Studio.png');
+    imshow(floor_map_image);
+    hold on
+
     paint_BT_icon(BT_icon_list(folder_index),...        
                   BT_icon_location_list(folder_index,1),...     
                   BT_icon_location_list(folder_index,2));
@@ -110,8 +123,26 @@ for folder_index = 1:number_of_folders
         filepath_1 = char(filepath_1);
         filepath_2 = char(filepath_2);
         
-        %[ graph_save_name, graph_title ] = graph_name_generator(folder_list, walking_paths_names_list,  file_index,folder_index, results_path);
-        %Data_Analyzer(graph_save_name, graph_title, filepath_1, filepath_2, walking_paths_distance_list((file_index/2)), starting_point_name_list(file_index/2));
-
+        [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer_Smooth(filepath_1, filepath_2);
+        %hmo = HeatMap(Raw_Data_Y1_transposed);
+        %colormap('hot')
+        paint_heat_map(Raw_Data_Y1_transposed,...
+                       heat_map_rotation_list(heat_map_location_index),...
+                       heat_map_length_list(heat_map_location_index),...
+                       heat_map_location_list(heat_map_location_index, 1),...
+                       heat_map_location_list(heat_map_location_index, 2));
+                   
+        heat_map_location_index = (heat_map_location_index + 1)
+        
+        paint_heat_map(Raw_Data_Y2_transposed,...
+                       heat_map_rotation_list(heat_map_location_index),...
+                       heat_map_length_list(heat_map_location_index),...
+                       heat_map_location_list(heat_map_location_index, 1),...
+                       heat_map_location_list(heat_map_location_index, 2));
+                   
+        heat_map_location_index = (heat_map_location_index + 1)
+        
     end
+    saveas(h, visualization_image_save_name,'png');
+    close(h)
 end
