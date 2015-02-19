@@ -104,7 +104,7 @@ for folder_index = 1:number_of_folders
         folder_path2 = folder_path_list2(folder_index2,1);
         [ file_list, number_of_files ] = get_file_list(folder_path2{1});
         file_index = 0;
-        heat_map_gap = 0;
+        heat_map_gap = 
         while file_index < number_of_files
             % Create a variable to plot heats with a gap in parallel
             file_index = file_index + 1;
@@ -119,13 +119,10 @@ for folder_index = 1:number_of_folders
         [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2);
         %hmo = HeatMap(Raw_Data_Y1_transposed);
         %colormap('hot')
-        
-        
-        
         paint_heat_map(Raw_Data_Y1_transposed,...
                        heat_map_rotation_list(heat_map_location_index),...
                        heat_map_length_list(heat_map_location_index),...
-                       (heat_map_location_list(heat_map_location_index, 1) - heat_map_gap),...
+                       heat_map_location_list(heat_map_location_index, 1),...
                        heat_map_location_list(heat_map_location_index, 2));
                    
         heat_map_location_index_next = (heat_map_location_index + 1)
@@ -133,10 +130,10 @@ for folder_index = 1:number_of_folders
         paint_heat_map(Raw_Data_Y2_transposed,...
                        heat_map_rotation_list(heat_map_location_index_next),...
                        heat_map_length_list(heat_map_location_index_next),...
-                       (heat_map_location_list(heat_map_location_index_next, 1) + heat_map_gap),...
+                       heat_map_location_list(heat_map_location_index_next, 1),...
                        heat_map_location_list(heat_map_location_index_next, 2));
                    
-        heat_map_gap = heat_map_gap + 10;
+        
         end
         heat_map_location_index = (heat_map_location_index + 1)
     end
