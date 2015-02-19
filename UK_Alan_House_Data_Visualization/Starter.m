@@ -1,41 +1,42 @@
 clear;
 
 global data_folder_path ;
-data_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Raw_Data_SL_House';
+data_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\SL_House_Data_Visualization\Raw_Data_SL_House';
 
 global AUS_floor_map_image_path ;
-AUS_floor_map_image_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\Floor_Maps\AUS_Studio.png';
+AUS_floor_map_image_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\SL_House_Data_Visualization\Resources\Floor_Maps\AUS_Studio.png';
 
 global BT_Icons_folder_path ;
-BT_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\BT_Icons\';
+BT_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\SL_House_Data_Visualization\Resources\BT_Icons\';
 
 global Walking_direction_Icons_folder_path ;
-Walking_direction_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\Direction_Icons\'
+Walking_direction_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\SL_House_Data_Visualization\Resources\Direction_Icons\'
 
 
-BT_1_Icon_Location_KitchenCeilings = [732, 920];
-BT_2_Icon_Location_BathroomCeilings = [242, 920];
-BT_3_Icon_Location_KitchenFridge = [678, 782];
-BT_4_Icon_Location_BathroomSink = [56, 700];
+BT_1_Icon_Location_UpperFloor_BathroomCelling = [530,196];
+BT_2_Icon_Location_UpperFloor_WashingMachine = [91, 314];
+BT_3_Icon_Location_UpperFloor_Masterroom = [76, 377];
+BT_4_Icon_Location_GounrFloor_TV = [212, 646];
+BT_5_Icon_Location_GounrFloor_Bathroom = [541, 722];
+BT_6_Icon_Location_GounrFloor_Garage = [88, 975];
+BT_7_Icon_Location_GounrFloor_Fridge = [472, 755];
 
-BT_icon_location_list = [BT_1_Icon_Location_KitchenCeilings,
-                    BT_1_Icon_Location_KitchenCeilings,
-                    BT_1_Icon_Location_KitchenCeilings,
-                    BT_2_Icon_Location_BathroomCeilings,
-                    BT_2_Icon_Location_BathroomCeilings,
-                    BT_3_Icon_Location_KitchenFridge,
-                    BT_3_Icon_Location_KitchenFridge,
-                    BT_4_Icon_Location_BathroomSink];
+BT_icon_location_list = [BT_1_Icon_Location_UpperFloor_BathroomCelling,
+                    BT_2_Icon_Location_UpperFloor_WashingMachine,
+                    BT_3_Icon_Location_UpperFloor_Masterroom,
+                    BT_4_Icon_Location_GounrFloor_TV,
+                    BT_5_Icon_Location_GounrFloor_Bathroom,
+                    BT_6_Icon_Location_GounrFloor_Garage,
+                    BT_7_Icon_Location_GounrFloor_Fridge];
                 
 
 BT_icon_list = {'BT_Left.png', 
-                'BT_Right.png', 
+                'BT_Up.png', 
                 'BT_Up.png',
                 'BT_Right.png', 
                 'BT_Up.png'
-                'BT_Right.png', 
-                'BT_Right.png', 
-                'BT_Down.png'}
+                'BT_Up.png', 
+                'BT_Right.png'}
 
 Walking_Direction_Icon_Location_P1_Up = [650, 286];
 Walking_Direction_Icon_Location_P1_Down = [750, 1200];
