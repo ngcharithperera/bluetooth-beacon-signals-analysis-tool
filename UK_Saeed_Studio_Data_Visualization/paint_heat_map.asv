@@ -14,8 +14,13 @@ function [  ] = paint_heat_map( data, rotation, length,  location_x, location_y 
     heat_map = imrotate(heat_map,rotation);
     uniquebgcolor=[255 255 255]; 
     mask = bsxfun(@eq,heat_map,reshape(uniquebgcolor,1,1,3));
-    heat_map = imagesc(location_x, location_y, heat_map,'alphadata',1-double(all(mask,3)));
-
+%     heat_map = imagesc(location_x, location_y, heat_map,'alphadata',1-double(all(mask,3)));
+%     heat_map = imagesc( heat_map,'alphadata',1-double(all(mask,3)));
+%     set(heat_map,'Position',[0 0 1 1])
+%     heat_map = image(0,0, heat_map,'alphadata',1-double(all(mask,3)))
+%     heat_map = imresize(heat_map,[8 length]);
+%     imagesc(location_x, location_y, heat_map)
+    
     delete('temp.png');
 end
 

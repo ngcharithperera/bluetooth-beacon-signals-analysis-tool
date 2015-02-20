@@ -32,11 +32,11 @@ BT_icon_list = {'BT_Right.png',
                 'BT_Up.png'}
 
 Walking_Direction_Icon_Location_P1_Up = [229, 21];
-Walking_Direction_Icon_Location_P1_Down = [347, 926];
+Walking_Direction_Icon_Location_P1_Down = [347, 900];
 Walking_Direction_Icon_Location_P2_Left = [20, 171];
-Walking_Direction_Icon_Location_P2_Right = [371, 319];
-Walking_Direction_Icon_Location_P3_Left = [13, 726];
-Walking_Direction_Icon_Location_P3_Right = [176, 810];            
+Walking_Direction_Icon_Location_P2_Right = [340, 340];
+Walking_Direction_Icon_Location_P3_Left = [13, 700];
+Walking_Direction_Icon_Location_P3_Right = [176, 850];            
             
             
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
@@ -55,12 +55,12 @@ walking_direction_icon_image_list = {'Walk_Up.png',
                                      'Walk_Right.png'};
 
 
-Heat_Map_Location_P1_Up = [260, -140];
-Heat_Map_Location_P1_Down = [310, -100 ];
-Heat_Map_Location_P2_Left = [14, 213];
-Heat_Map_Location_P2_Right = [370, 269];
-Heat_Map_Location_P3_Left = [11, 753];
-Heat_Map_Location_P3_Right = [181, 795 ];
+Heat_Map_Location_P1_Up = [260, -80];
+Heat_Map_Location_P1_Down = [310, -50 ];
+Heat_Map_Location_P2_Left = [-40, 213];
+Heat_Map_Location_P2_Right = [-40, 269];
+Heat_Map_Location_P3_Left = [-5, 753];
+Heat_Map_Location_P3_Right = [-5, 795 ];
 
 
 
@@ -74,12 +74,23 @@ heat_map_location_list = [Heat_Map_Location_P1_Up,
 
 
 heat_map_rotation_list = [270, 90, 0, 180, 0, 180]
-heat_map_length_list = [1200, 1200,  850, 850, 500, 500]
+heat_map_length_list = [1000, 1000,  500, 500, 230, 230]
+
+heat_map_gap_size = 10
+gap_for_Up_down = [heat_map_gap_size, 0 ];
+gap_for_left_right = [0, heat_map_gap_size];
+
+
+gap_list = [gap_for_Up_down,
+            gap_for_left_right,
+            gap_for_left_right];
+
+
 
 [ folder_list, folder_path_list, number_of_folders ] = get_folder_list(data_folder_path);
 
 for folder_index = 1:number_of_folders   
-    heat_map_location_index = 1
+   % heat_map_location_index = 1
     visualization_image_save_name = folder_list(folder_index);
     visualization_image_save_name = visualization_image_save_name{1}
     visualization_image_save_name = strcat(visualization_image_save_name , '.png')
@@ -98,7 +109,8 @@ for folder_index = 1:number_of_folders
  folder_path = folder_path_list(folder_index,1);
     
     [ folder_list2, folder_path_list2, number_of_folders2 ] = get_folder_list(folder_path{1});
-
+    heat_map_location_index = 0;
+    
     for folder_index2 = 1:number_of_folders2  
         
         folder_path2 = folder_path_list2(folder_index2,1);
@@ -106,7 +118,6 @@ for folder_index = 1:number_of_folders
         file_index = 0;
         heat_map_gap = 0;
         while file_index < number_of_files
-            % Create a variable to plot heats with a gap in parallel
             file_index = file_index + 1;
             filepath_1 = file_list(file_index,1);
 
@@ -116,30 +127,28 @@ for folder_index = 1:number_of_folders
             filepath_1 = char(filepath_1);
             filepath_2 = char(filepath_2);
 
-        [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2);
-        %hmo = HeatMap(Raw_Data_Y1_transposed);
-        %colormap('hot')
-        
-        
-        
-        paint_heat_map(Raw_Data_Y1_transposed,...
-                       heat_map_rotation_list(heat_map_location_index),...
-                       heat_map_length_list(heat_map_location_index),...
-                       (heat_map_location_list(heat_map_location_index, 1) - heat_map_gap),...
-                       heat_map_location_list(heat_map_location_index, 2));
-                   
-        heat_map_location_index_next = (heat_map_location_index + 1)
-        
-        paint_heat_map(Raw_Data_Y2_transposed,...
-                       heat_map_rotation_list(heat_map_location_index_next),...
-                       heat_map_length_list(heat_map_location_index_next),...
-                       (heat_map_location_list(heat_map_location_index_next, 1) + heat_map_gap),...
-                       heat_map_location_list(heat_map_location_index_next, 2));
-                   
-        heat_map_gap = heat_map_gap + 10;
+            [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2);
+
+            heat_map_location_index1 = (2 * folder_index2) - 1
+
+            paint_heat_map(Raw_Data_Y1_transposed,...
+                           heat_map_rotation_list(heat_map_location_index1),...
+                           heat_map_length_list(heat_map_location_index1),...
+                           (heat_map_location_list(heat_map_location_index1, 1) + (gap_list(folder_index2,1)* (file_index/2))  ),...
+                           (heat_map_location_list(heat_map_location_index1, 2) + (gap_list(folder_index2,2)* (file_index/2))   ))
+
+            heat_map_location_index2 = (2 * folder_index2) 
+
+            paint_heat_map(Raw_Data_Y2_transposed,...
+                           heat_map_rotation_list(heat_map_location_index2),...
+                           heat_map_length_list(heat_map_location_index2),...
+                           (heat_map_location_list(heat_map_location_index2, 1) + (gap_list(folder_index2,1)* (file_index/2)) ),...
+                           (heat_map_location_list(heat_map_location_index2, 2) + (gap_list(folder_index2,2)* (file_index/2))  ))
+
+            heat_map_gap = heat_map_gap + heat_map_gap_size;
         end
-        heat_map_location_index = (heat_map_location_index + 1)
     end
+    
     saveas(h, visualization_image_save_name,'png');
     close(h)
 end
