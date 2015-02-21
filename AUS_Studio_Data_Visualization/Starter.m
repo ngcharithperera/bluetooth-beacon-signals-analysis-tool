@@ -123,7 +123,7 @@ for folder_index = 1:number_of_folders
         filepath_1 = char(filepath_1);
         filepath_2 = char(filepath_2);
         
-        [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer_Smooth(filepath_1, filepath_2);
+        [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2);
         %hmo = HeatMap(Raw_Data_Y1_transposed);
         %colormap('hot')
         paint_heat_map(Raw_Data_Y1_transposed,...

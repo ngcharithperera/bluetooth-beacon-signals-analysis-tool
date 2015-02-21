@@ -2,7 +2,7 @@ function [  ] = paint_heat_map( data, rotation, length,  location_x, location_y 
 
     fig = figure;
     heat_map = imagesc(data)
-    set(gca, 'CLim', [-110, -50]);
+    %set(gca, 'CLim', [-110, -50]);
     axis off
     saveas(heat_map,'temp.png','png');
 	close(fig);

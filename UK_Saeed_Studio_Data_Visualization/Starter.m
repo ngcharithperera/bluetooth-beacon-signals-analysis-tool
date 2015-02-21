@@ -32,11 +32,11 @@ BT_icon_list = {'BT_Right.png',
                 'BT_Up.png'}
 
 Walking_Direction_Icon_Location_P1_Up = [229, 21];
-Walking_Direction_Icon_Location_P1_Down = [347, 900];
-Walking_Direction_Icon_Location_P2_Left = [20, 171];
-Walking_Direction_Icon_Location_P2_Right = [340, 340];
-Walking_Direction_Icon_Location_P3_Left = [13, 700];
-Walking_Direction_Icon_Location_P3_Right = [176, 850];            
+Walking_Direction_Icon_Location_P1_Down = [340, 900];
+Walking_Direction_Icon_Location_P2_Left = [10, 171];
+Walking_Direction_Icon_Location_P2_Right = [340, 315];
+Walking_Direction_Icon_Location_P3_Left = [10, 722];
+Walking_Direction_Icon_Location_P3_Right = [176, 835];            
             
             
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
@@ -55,12 +55,12 @@ walking_direction_icon_image_list = {'Walk_Up.png',
                                      'Walk_Right.png'};
 
 
-Heat_Map_Location_P1_Up = [260, -80];
-Heat_Map_Location_P1_Down = [310, -50 ];
-Heat_Map_Location_P2_Left = [-40, 213];
-Heat_Map_Location_P2_Right = [-40, 269];
-Heat_Map_Location_P3_Left = [-5, 753];
-Heat_Map_Location_P3_Right = [-5, 795 ];
+Heat_Map_Location_P1_Up = [260, 5];
+Heat_Map_Location_P1_Down = [310, 5 ];
+Heat_Map_Location_P2_Left = [5, 213];
+Heat_Map_Location_P2_Right = [5, 269];
+Heat_Map_Location_P3_Left = [5, 753];
+Heat_Map_Location_P3_Right = [5, 795 ];
 
 
 
@@ -73,8 +73,8 @@ heat_map_location_list = [Heat_Map_Location_P1_Up,
 
 
 
-heat_map_rotation_list = [270, 90, 0, 180, 0, 180]
-heat_map_length_list = [1000, 1000,  500, 500, 230, 230]
+heat_map_rotation_list = [90, 270, 180, 0, 180, 0]
+heat_map_length_list = [945, 945,  375, 375, 185, 185]
 
 heat_map_gap_size = 10
 gap_for_Up_down = [heat_map_gap_size, 0 ];
@@ -98,13 +98,19 @@ for folder_index = 1:number_of_folders
     h = figure;
     floor_map_image = imread(AUS_floor_map_image_path);
     imshow(floor_map_image);
+    map = colormap; % current colormap
+    map(1,:) = [0,0,0];
+    colormap(map)
+    colormap(flipud(colormap))
+    
+    [cmin,cmax] = caxis;
+    caxis([-110, -50])
+    [cmin,cmax] = caxis;
+    colorbar;
     hold on
+    
 
-    paint_BT_icon(BT_icon_list(folder_index),...        
-                  BT_icon_location_list(folder_index,1),...     
-                  BT_icon_location_list(folder_index,2));
-    paint_all_direction_icons(walking_direction_icon_image_list,...
-                              walking_direction_icon_list);
+
     
  folder_path = folder_path_list(folder_index,1);
     
@@ -148,7 +154,11 @@ for folder_index = 1:number_of_folders
             heat_map_gap = heat_map_gap + heat_map_gap_size;
         end
     end
-    
+    paint_BT_icon(BT_icon_list(folder_index),...        
+                  BT_icon_location_list(folder_index,1),...     
+                  BT_icon_location_list(folder_index,2));
+    paint_all_direction_icons(walking_direction_icon_image_list,...
+                              walking_direction_icon_list);
     saveas(h, visualization_image_save_name,'png');
     close(h)
 end
