@@ -41,7 +41,7 @@ Walking_Direction_Icon_Location_P4_Up = [430, 55];
 Walking_Direction_Icon_Location_P5_Down = [652, 141];
 Walking_Direction_Icon_Location_P5_Up = [563, 56];                
             
-walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Right,
+walking_direction_icon_location_list = [Walking_Direction_Icon_Location_P1_Right,
                                Walking_Direction_Icon_Location_P1_Left,
                                Walking_Direction_Icon_Location_P2_Right,
                                Walking_Direction_Icon_Location_P2_Left,
@@ -121,7 +121,7 @@ for folder_index = 1:number_of_folders
     map = colormap; % current colormap
     map(1,:) = [0,0,0];
     colormap(map)
-    colormap(flipud(colormap))
+    %colormap(flipud(colormap))
     
     [cmin,cmax] = caxis;
     caxis([-110, -50])
@@ -177,8 +177,9 @@ for folder_index = 1:number_of_folders
     paint_BT_icon(BT_icon_list(folder_index),...        
                   BT_icon_location_list(folder_index,1),...     
                   BT_icon_location_list(folder_index,2));
+              
     paint_all_direction_icons(walking_direction_icon_image_list,...
-                              walking_direction_icon_list);
+                              walking_direction_icon_location_list);
     
     
     saveas(h, visualization_image_save_name,'png');

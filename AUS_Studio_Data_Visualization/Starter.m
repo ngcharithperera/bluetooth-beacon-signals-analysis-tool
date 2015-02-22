@@ -107,7 +107,7 @@ for folder_index = 1:number_of_folders
     map = colormap; % current colormap
     map(1,:) = [0,0,0];
     colormap(map)
-    colormap(flipud(colormap))
+    %colormap(flipud(colormap))
     
     [cmin,cmax] = caxis;
     caxis([-110, -50])

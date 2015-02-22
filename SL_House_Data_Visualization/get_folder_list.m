@@ -5,6 +5,8 @@ function [ folder_list, folder_path_list, number_of_folders ] = get_folder_list(
     nameFolds = {folder_content_list(isub).name}';
     nameFolds(ismember(nameFolds,{'.','..'})) = [];
     folder_list = nameFolds;
+    %[folder_list,SNR,STR] = asort(folder_list, 'ANR')
+    [folder_list,index] = sort_nat(folder_list)
     folder_path_list = strcat(data_path, path_seperator, folder_list);
     [number_of_folders, m] = size(folder_path_list);
 end
