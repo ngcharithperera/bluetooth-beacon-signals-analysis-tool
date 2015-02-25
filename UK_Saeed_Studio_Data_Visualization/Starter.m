@@ -33,10 +33,10 @@ BT_icon_list = {'BT_Right.png',
 
 Walking_Direction_Icon_Location_P1_Up = [229, 21];
 Walking_Direction_Icon_Location_P1_Down = [340, 900];
-Walking_Direction_Icon_Location_P2_Left = [10, 171];
-Walking_Direction_Icon_Location_P2_Right = [340, 315];
-Walking_Direction_Icon_Location_P3_Left = [10, 722];
-Walking_Direction_Icon_Location_P3_Right = [176, 835];            
+Walking_Direction_Icon_Location_P2_Left = [10, 720];
+Walking_Direction_Icon_Location_P2_Right = [160, 835];
+Walking_Direction_Icon_Location_P3_Left = [10, 180];
+Walking_Direction_Icon_Location_P3_Right = [340, 315];            
             
             
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,

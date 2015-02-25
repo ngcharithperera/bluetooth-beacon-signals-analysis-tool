@@ -30,16 +30,16 @@ BT_icon_list = {'BT_Down.png',
                 'BT_Down.png',
                 'BT_Up.png'}
 
-Walking_Direction_Icon_Location_P1_Right = [1005, 387];
-Walking_Direction_Icon_Location_P1_Left = [27, 452];
-Walking_Direction_Icon_Location_P2_Right = [375, 477];
-Walking_Direction_Icon_Location_P2_Left = [91, 607];
-Walking_Direction_Icon_Location_P3_Right = [898, 23];
-Walking_Direction_Icon_Location_P3_Left = [165, 96]
-Walking_Direction_Icon_Location_P4_Down = [511, 151];
-Walking_Direction_Icon_Location_P4_Up = [430, 55];            
-Walking_Direction_Icon_Location_P5_Down = [652, 141];
-Walking_Direction_Icon_Location_P5_Up = [563, 56];                
+Walking_Direction_Icon_Location_P1_Right = [1005, 365];
+Walking_Direction_Icon_Location_P1_Left = [15, 470];
+Walking_Direction_Icon_Location_P2_Right = [402, 536];
+Walking_Direction_Icon_Location_P2_Left = [50, 584];
+Walking_Direction_Icon_Location_P3_Right = [905, 10];
+Walking_Direction_Icon_Location_P3_Left = [116, 50]
+Walking_Direction_Icon_Location_P4_Down = [435, 170];
+Walking_Direction_Icon_Location_P4_Up = [480, 170];            
+Walking_Direction_Icon_Location_P5_Down = [570, 170];
+Walking_Direction_Icon_Location_P5_Up = [615, 170];                
             
 walking_direction_icon_location_list = [Walking_Direction_Icon_Location_P1_Right,
                                Walking_Direction_Icon_Location_P1_Left,
@@ -65,7 +65,7 @@ walking_direction_icon_image_list = {'Walk_Right.png',
                                      'Walk_Up.png'};
 
 
-Heat_Map_Location_P1_Right = [20, 394];
+Heat_Map_Location_P1_Right = [20, 385];
 Heat_Map_Location_P1_Left = [20, 429];
 Heat_Map_Location_P2_Right = [80, 525];
 Heat_Map_Location_P2_Left = [80, 575];

@@ -1,5 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Authour: Charith Perera                                     %
+%  Date: 22-02-2014                                            %
+%  Purpose: Vizualize how bluetooh seacon strength varies      %
+%           in differnt buildings                              %
+%                                                              %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 clear;
 
+%% Define Global Variables =File/Directory Paths
 global data_folder_path ;
 data_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Raw_Data_AUS_Studio';
 
@@ -12,12 +22,17 @@ BT_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visua
 global Walking_direction_Icons_folder_path ;
 Walking_direction_Icons_folder_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\Direction_Icons\'
 
+global output_path;
+output_path = 'C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Output';
+
+%% Define the BT Locations (X, Y) Coordinates
 
 BT_1_Icon_Location_KitchenCeilings = [732, 920];
 BT_2_Icon_Location_BathroomCeilings = [242, 920];
 BT_3_Icon_Location_KitchenFridge = [678, 782];
 BT_4_Icon_Location_BathroomSink = [56, 700];
 
+%% Add all BT beacon locations to a list
 BT_icon_location_list = [BT_1_Icon_Location_KitchenCeilings,
                     BT_1_Icon_Location_KitchenCeilings,
                     BT_1_Icon_Location_KitchenCeilings,
@@ -27,7 +42,8 @@ BT_icon_location_list = [BT_1_Icon_Location_KitchenCeilings,
                     BT_3_Icon_Location_KitchenFridge,
                     BT_4_Icon_Location_BathroomSink];
                 
-
+%% List which icons to be used in order (Number of items in 
+% BT_icon_location_list and BT_icon_list should be equal)
 BT_icon_list = {'BT_Left.png', 
                 'BT_Right.png', 
                 'BT_Up.png',
@@ -35,16 +51,18 @@ BT_icon_list = {'BT_Left.png',
                 'BT_Up.png'
                 'BT_Right.png', 
                 'BT_Right.png', 
-                'BT_Down.png'}
+                'BT_Down.png'};
 
-Walking_Direction_Icon_Location_P1_Up = [650, 286];
-Walking_Direction_Icon_Location_P1_Down = [750, 1200];
-Walking_Direction_Icon_Location_P2_Up = [240, 70];
-Walking_Direction_Icon_Location_P2_Down = [330, 1150];
-Walking_Direction_Icon_Location_P3_Left = [5, 500];
-Walking_Direction_Icon_Location_P3_Right = [800, 570];
+            
+%% Define the locations to paint walking directions icons            
+Walking_Direction_Icon_Location_P1_Up = [640, 200];
+Walking_Direction_Icon_Location_P1_Down = [790, 1230];
+Walking_Direction_Icon_Location_P2_Up = [215, 30];
+Walking_Direction_Icon_Location_P2_Down = [360, 1180];
+Walking_Direction_Icon_Location_P3_Left = [5, 480];
+Walking_Direction_Icon_Location_P3_Right = [800, 600];
 Walking_Direction_Icon_Location_P4_Left = [5, 830];
-Walking_Direction_Icon_Location_P4_Right = [400, 948];            
+Walking_Direction_Icon_Location_P4_Right = [425, 975];            
             
             
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
@@ -88,8 +106,8 @@ heat_map_location_list = [Heat_Map_Location_P1_Up,
 
 
 
-heat_map_rotation_list = [90, 270,  90, 270, 180, 0, 180, 0]
-heat_map_length_list = [1050, 1050,  1200, 1200, 800, 800, 450, 450]
+heat_map_rotation_list = [90, 270,  90, 270, 180, 0, 180, 0];
+heat_map_length_list = [1050, 1050,  1200, 1200, 800, 800, 450, 450];
 
 [ folder_list, folder_path_list, number_of_folders ] = get_folder_list(data_folder_path);
 
@@ -98,6 +116,7 @@ for folder_index = 1:number_of_folders
     visualization_image_save_name = folder_list(folder_index);
     visualization_image_save_name = visualization_image_save_name{1}
     visualization_image_save_name = strcat(visualization_image_save_name , '.png')
+    visualization_image_save_name = strcat(output_path, visualization_image_save_name)
     %floor_map_image = Load_Floor_Map('AUS'); 
     h = figure;
     floor_map_image = imread('C:\ResearchCode\BT_SIGNAL_ANALYSIS\AUS_Studio_Data_Visualization\Resources\Floor_Maps\AUS_Studio.png');
