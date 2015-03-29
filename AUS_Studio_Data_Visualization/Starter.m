@@ -64,7 +64,7 @@ Walking_Direction_Icon_Location_P3_Right = [800, 600];
 Walking_Direction_Icon_Location_P4_Left = [5, 830];
 Walking_Direction_Icon_Location_P4_Right = [425, 975];            
             
-            
+%% Add all walking directions icon locations to a list            
 walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
                                Walking_Direction_Icon_Location_P1_Down,
                                Walking_Direction_Icon_Location_P2_Up,
@@ -74,7 +74,9 @@ walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,
                                Walking_Direction_Icon_Location_P4_Left,
                                Walking_Direction_Icon_Location_P4_Right];
              
-
+%% List contains the name of the walking directions icon.
+%(Number of items in the walking directions list 
+% BT_icon_location_list and BT_icon_list should be equal)
 walking_direction_icon_image_list = {'Walk_Up.png', 
                                      'Walk_Down.png', 
                                      'Walk_Up.png',

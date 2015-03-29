@@ -9,6 +9,7 @@ function [  ] = paint_heat_map( data, rotation, length,  location_x, location_y 
     map = colormap; % current colormap
     map(1,:) = [0,0,0];
     colormap(map)
+    colormap jet;
     %colormap(flipud(colormap))
     %colorbar;
     %axis off
