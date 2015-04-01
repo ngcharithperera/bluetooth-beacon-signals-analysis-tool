@@ -1,7 +1,7 @@
 function [  ] = paint_heat_map( data, rotation, length,  location_x, location_y )
 
-    fig = figure;
-    heat_map = imagesc(data)
+    h2 = figure;
+    heat_map = imagesc(data);
     %set(gca, 'CLim', [-110, -60]);
     
     [cmin,cmax] = caxis;
@@ -14,7 +14,7 @@ function [  ] = paint_heat_map( data, rotation, length,  location_x, location_y 
     %colorbar;
     %axis off
     saveas(heat_map,'temp.png','png');
-	close(fig);
+	close(h2);
     [heat_map, map, alpha] = imread('temp.png');
     %imshow(heat_map);
     %close;

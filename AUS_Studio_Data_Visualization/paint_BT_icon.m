@@ -1,7 +1,7 @@
 function [ ] = paint_BT_icon( BT_image, location_x, location_y )
-    global BT_Icons_folder_path
+    global BT_icons_folder_path
     uniquebgcolor=[0 0 0]; 
-    BT_image_url = strcat(BT_Icons_folder_path, BT_image);
+    BT_image_url = strcat(BT_icons_folder_path, BT_image);
     BT_image_url = char(BT_image_url(1,1))
     [BT_Icon_Image, map, alpha] = imread(BT_image_url);
     BT_Icon_Image = imresize(BT_Icon_Image,[80 80]);
