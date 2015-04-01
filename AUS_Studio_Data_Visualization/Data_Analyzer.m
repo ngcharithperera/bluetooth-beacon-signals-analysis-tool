@@ -1,15 +1,13 @@
-function [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2)
+function [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = data_analyzer(filepath_1, filepath_2)
 
+[Raw_Data_Y1, no_of_elements_in_Y1] = Raw_Data_Extractor(filepath_1);
+[Raw_Data_Y2, no_of_elements_in_Y2] = Raw_Data_Extractor(filepath_2);
 
-[Raw_Data_Y1, no_of_elements_in_Y1] = Raw_Data_Extractor4(filepath_1);
-[Raw_Data_Y2, no_of_elements_in_Y2] = Raw_Data_Extractor4(filepath_2);
+Raw_Data_Y1_index  = Raw_Data_Y1 < 0;
+Raw_Data_Y2_index = Raw_Data_Y2 < 0;
 
-
-Raw_Data_Y1_index  = find(Raw_Data_Y1 < 0)
-Raw_Data_Y2_index = find(Raw_Data_Y2 < 0)
-
-Raw_Data_Y1 = Raw_Data_Y1(Raw_Data_Y1_index)
-Raw_Data_Y2 = Raw_Data_Y2(Raw_Data_Y2_index)
+Raw_Data_Y1 = Raw_Data_Y1(Raw_Data_Y1_index);
+Raw_Data_Y2 = Raw_Data_Y2(Raw_Data_Y2_index);
 
 Raw_Data_Y1_transposed = transpose(Raw_Data_Y1);
 Raw_Data_Y2_transposed = transpose(Raw_Data_Y2);
