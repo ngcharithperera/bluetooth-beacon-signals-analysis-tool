@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Developer: Charith Perera                                     %
+%  Developer: Charith Perera                                   %
 %  Date: 22-02-2014                                            %
 %  Purpose: Vizualize how bluetooh beacon signal strength      %
 %           varies in differnt buildings                       %
