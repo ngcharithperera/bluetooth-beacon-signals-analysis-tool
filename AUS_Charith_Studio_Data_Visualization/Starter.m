@@ -11,10 +11,10 @@ clear;
 
 %% Define Global Variables
 global raw_data_folder_path ;
-raw_data_folder_path = '..\Raw_Data\Raw_Data_AUS_Studio';
+raw_data_folder_path = '..\Raw_Data\Raw_Data_AUS_Charith_Studio';
 
 global floor_map_image_path ;
-floor_map_image_path = '..\Resources\Floor_Maps\AUS_Studio.png';
+floor_map_image_path = '..\Resources\Floor_Maps\AUS_Charith_Studio.png';
 
 global BT_icons_folder_path ;
 BT_icons_folder_path = '..\Resources\BT_Icons\';
@@ -23,7 +23,7 @@ global walking_direction_icons_folder_path ;
 walking_direction_icons_folder_path = '..\Resources\Direction_Icons\';
 
 global output_path;
-output_path = '.\Output\';
+output_path = strcat('..\Results\' , datestr(now,'mm-dd-yyyy'), '\', 'AUS_Studio\');
 
 %% Define the BT beacon icon locations (X, Y) coordinates
 BT_1_Icon_Location_KitchenCeilings = [732, 920];
@@ -32,23 +32,23 @@ BT_3_Icon_Location_KitchenFridge = [678, 782];
 BT_4_Icon_Location_BathroomSink = [56, 700];
 
 %% Add all BT beacon icon locations to a list
-BT_icon_location_list = [BT_1_Icon_Location_KitchenCeilings,...
-                    BT_1_Icon_Location_KitchenCeilings,...
-                    BT_1_Icon_Location_KitchenCeilings,...
-                    BT_2_Icon_Location_BathroomCeilings,...
-                    BT_2_Icon_Location_BathroomCeilings,...
-                    BT_3_Icon_Location_KitchenFridge,...
-                    BT_3_Icon_Location_KitchenFridge,...
+BT_icon_location_list = [BT_1_Icon_Location_KitchenCeilings;
+                    BT_1_Icon_Location_KitchenCeilings;
+                    BT_1_Icon_Location_KitchenCeilings;
+                    BT_2_Icon_Location_BathroomCeilings;
+                    BT_2_Icon_Location_BathroomCeilings;
+                    BT_3_Icon_Location_KitchenFridge;
+                    BT_3_Icon_Location_KitchenFridge;
                     BT_4_Icon_Location_BathroomSink];
                 
 %% List which BT icons to be used 'in order' (Number of items in 
-BT_icon_list = {'BT_Left.png',... 
-                'BT_Right.png',... 
-                'BT_Up.png',...
-                'BT_Right.png',... 
-                'BT_Up.png',...
-                'BT_Right.png',...
-                'BT_Right.png',... 
+BT_icon_list = {'BT_Left.png';
+                'BT_Right.png';
+                'BT_Up.png';
+                'BT_Right.png';
+                'BT_Up.png';
+                'BT_Right.png';
+                'BT_Right.png'; 
                 'BT_Down.png'};
             
 %% Define walking direction icon locations (X, Y) coordinates            
@@ -62,23 +62,23 @@ Walking_Direction_Icon_Location_P4_Left = [5, 830];
 Walking_Direction_Icon_Location_P4_Right = [425, 975];            
             
 %% Add all walking direction iconlocations to a list           
-walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up,...
-                               Walking_Direction_Icon_Location_P1_Down,...
-                               Walking_Direction_Icon_Location_P2_Up,...
-                               Walking_Direction_Icon_Location_P2_Down,...
-                               Walking_Direction_Icon_Location_P3_Left,...
-                               Walking_Direction_Icon_Location_P3_Right,...
-                               Walking_Direction_Icon_Location_P4_Left,...
+walking_direction_icon_list = [Walking_Direction_Icon_Location_P1_Up;
+                               Walking_Direction_Icon_Location_P1_Down;
+                               Walking_Direction_Icon_Location_P2_Up;
+                               Walking_Direction_Icon_Location_P2_Down;
+                               Walking_Direction_Icon_Location_P3_Left;
+                               Walking_Direction_Icon_Location_P3_Right;
+                               Walking_Direction_Icon_Location_P4_Left;
                                Walking_Direction_Icon_Location_P4_Right];
              
 %% List contains the name of the walking directions icons 'in order'.
-walking_direction_icon_image_list = {'Walk_Up.png',...
-                                     'Walk_Down.png',...
-                                     'Walk_Up.png',...
-                                     'Walk_Down.png',...
-                                     'Walk_Left.png',...
-                                     'Walk_Right.png',... 
-                                     'Walk_Left.png',...
+walking_direction_icon_image_list = {'Walk_Up.png';
+                                     'Walk_Down.png';
+                                     'Walk_Up.png';
+                                     'Walk_Down.png';
+                                     'Walk_Left.png';
+                                     'Walk_Right.png'; 
+                                     'Walk_Left.png';
                                      'Walk_Right.png'};
 
 %% Define heat map location (X, Y) coordinates
@@ -92,13 +92,13 @@ Heat_Map_Location_P4_Left = [20, 920];
 Heat_Map_Location_P4_Right = [20, 958];
 
 %% Add all heat map locations to a list
-heat_map_location_list = [Heat_Map_Location_P1_Up,...
-                          Heat_Map_Location_P1_Down,...
-                          Heat_Map_Location_P2_Up,...
-                          Heat_Map_Location_P2_Down,...
-                          Heat_Map_Location_P3_Left,...
-                          Heat_Map_Location_P3_Right,...
-                          Heat_Map_Location_P4_Left,...
+heat_map_location_list = [Heat_Map_Location_P1_Up;
+                          Heat_Map_Location_P1_Down;
+                          Heat_Map_Location_P2_Up;
+                          Heat_Map_Location_P2_Down;
+                          Heat_Map_Location_P3_Left;
+                          Heat_Map_Location_P3_Right;
+                          Heat_Map_Location_P4_Left;
                           Heat_Map_Location_P4_Right];
 
 
@@ -127,6 +127,7 @@ for folder_index = 1:number_of_folders
     visualization_image_save_name = folder_list(folder_index);
     visualization_image_save_name = visualization_image_save_name{1};
     visualization_image_save_name = strcat(visualization_image_save_name , '.png');
+    mkdir(output_path);
     visualization_image_save_name = strcat(output_path, visualization_image_save_name);
     
     % Set the color bar
@@ -146,7 +147,7 @@ for folder_index = 1:number_of_folders
         filepath_1 = char(filepath_1);
         filepath_2 = char(filepath_2);
         
-        % Analyse data
+        % Process data
         [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = data_analyzer(filepath_1, filepath_2);
 
         % Paint heat maps on top of the floor map
