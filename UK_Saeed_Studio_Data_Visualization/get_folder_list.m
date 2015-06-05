@@ -6,6 +6,6 @@ function [ folder_list, folder_path_list, number_of_folders ] = get_folder_list(
     nameFolds(ismember(nameFolds,{'.','..'})) = [];
     folder_list = nameFolds;
     folder_path_list = strcat(data_path, path_seperator, folder_list);
-    [number_of_folders, m] = size(folder_path_list);
+    [number_of_folders, ~] = size(folder_path_list);
 end
 
