@@ -173,7 +173,7 @@ for folder_index = 1:number_of_folders
                   BT_icon_location_list(folder_index,1),...     
                   BT_icon_location_list(folder_index,2));
     
-    % Paint walknig direction icons icons
+    % Paint walking direction icons icons
     paint_all_direction_icons(walking_direction_icon_image_list,...
                               walking_direction_icon_list);
     

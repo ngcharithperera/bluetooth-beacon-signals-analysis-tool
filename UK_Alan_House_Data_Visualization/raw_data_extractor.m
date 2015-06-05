@@ -1,4 +1,4 @@
-function [ Raw_Data2, no_of_elements ] = Raw_Data_Extractor4(filename, startRow, endRow)
+function [ Raw_Data2, no_of_elements ] = raw_data_extractor(filename, startRow, endRow)
 %IMPORTFILE Import numeric data from a text file as a matrix.
 %   UNTITLED = IMPORTFILE(FILENAME) Reads data from text file FILENAME for
 %   the default selection.

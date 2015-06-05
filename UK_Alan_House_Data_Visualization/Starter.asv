@@ -124,14 +124,14 @@ gap_for_Up_down = [heat_map_gap_size, 0 ];
 gap_for_left_right = [0, heat_map_gap_size];
 
 
-gap_list = [gap_for_left_right;
-            gap_for_left_right;
-            gap_for_left_right;
-            gap_for_Up_down;
+gap_list = [gap_for_left_right,
+            gap_for_left_right,
+            gap_for_left_right,
+            gap_for_Up_down,
             gap_for_Up_down];
 
 
-[ folder_list, folder_path_list, number_of_folders ] = get_folder_list(raw_data_folder_path);
+[ folder_list, folder_path_list, number_of_folders ] = get_folder_list(data_folder_path);
 
 for folder_index = 1:number_of_folders   
     
@@ -173,7 +173,7 @@ for folder_index = 1:number_of_folders
             filepath_1 = char(filepath_1);
             filepath_2 = char(filepath_2);
 
-            [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = data_analyzer(filepath_1, filepath_2);
+            [ Raw_Data_Y1_transposed, Raw_Data_Y2_transposed ] = Data_Analyzer(filepath_1, filepath_2);
 
             heat_map_location_index1 = (2 * folder_index2) - 1;
 
