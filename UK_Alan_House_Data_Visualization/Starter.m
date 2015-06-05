@@ -71,7 +71,8 @@ walking_direction_icon_location_list = [Walking_Direction_Icon_Location_P1_Right
                                Walking_Direction_Icon_Location_P5_Down;
                                Walking_Direction_Icon_Location_P5_Up];
              
-
+                           
+%% List contains the name of the walking directions icons 'in order'.
 walking_direction_icon_image_list = {'Walk_Right.png'; 
                                      'Walk_Left.png'; 
                                      'Walk_Right.png';
